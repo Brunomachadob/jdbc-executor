@@ -25,20 +25,20 @@ internal abstract class IntegrationTest {
         }
     }
 
-    fun withConnection(block: (Connection) -> Unit) {
+    fun withConnection(block: (Connection) -> Any) {
         dataSource.connection.use(block)
     }
 
     protected fun withInsertExecutor(
         sql: String,
-        block: (InsertExecutor) -> Unit
+        block: (InsertExecutor) -> Any
     ) = withConnection {
         block(InsertExecutor(it, sql))
     }
 
     fun withQueryExecutor(
         sql: String,
-        block: (QueryExecutor) -> Unit
+        block: (QueryExecutor) -> Any
     ) = withConnection {
         block(QueryExecutor(it, sql))
     }

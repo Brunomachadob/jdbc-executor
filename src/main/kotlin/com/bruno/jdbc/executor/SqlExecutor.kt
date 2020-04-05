@@ -3,7 +3,7 @@ package com.bruno.jdbc.executor
 import java.sql.Connection
 import java.sql.PreparedStatement
 
-typealias ParameterSupplier = (ParameterSetter) -> Unit
+typealias ParameterSupplier = (ParameterSetter) -> ParameterSetter
 
 abstract class SqlExecutor<T>(
     private val conn: Connection,
